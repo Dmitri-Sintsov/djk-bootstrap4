@@ -23,7 +23,8 @@ void function(TransformTags) {
 
     TransformTags.bsCard = function(elem, tagName) {
         var typ = tagName.split(/-/)[1].toLowerCase();
-        return this.toTag(elem, 'div', 'card ' + (typ === 'light' ? '' : 'text-white ') + 'bg-' + typ + ' mb-3');
+        var textClass = (typeof {'light': '', 'default': ''}[typ]) === 'undefined' ?  'text-white ': '';
+        return this.toTag(elem, 'div', 'card ' + (typ === 'light' ? '' : textClass) + 'bg-' + typ + ' mb-3');
     };
 
     TransformTags.bsCardHeader = function(elem, tagName) {
@@ -31,7 +32,7 @@ void function(TransformTags) {
     };
 
     TransformTags.bsCardBody = function(elem, tagName) {
-        return this.toTag(elem, 'div', 'card-body');
+        return this.toTag(elem, 'div', 'card-body text-dark bg-white');
     };
 
     TransformTags.bsCardFooter = function(elem, tagName) {
@@ -39,7 +40,7 @@ void function(TransformTags) {
     };
 
     TransformTags.bsCardTitle = function(elem, tagName) {
-        return this.toTag(elem, 'div', 'card-title');
+        return this.toTag(elem, 'div', 'card-title mb-0');
     };
 
 }(App.TransformTags.prototype);
