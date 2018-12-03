@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include 'base_head.htm' -%}
+{% block head -%}
+{% endblock head -%}
+</head>
+<body>
+{% block body -%}
+    <div class="container">
+        <div class="row">
+            <header class="col-md-2">
+                <nav class="navbar navbar-light bg-light nav-main navbar-expand-md" role="navigation">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav nav-pills nav-main flex-column auto-highlight">
+                            {% block mainmenu -%}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/{# url('home') #}">
+                                    <span class="glyphicon glyphicon-home"></span> {{ _('Home') }}
+                                </a>
+                            </li>
+                            {% endblock mainmenu -%}
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <main class="col-md-10">
+                <div class="container">
+                    {% if messages -%}
+                        {% include 'base_messages.htm' -%}
+                    {% endif -%}
+                    {% block main -%}
+                    {% endblock main -%}
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock body -%}
+{% include 'base_bottom_scripts.htm' -%}
+{% block bottom_scripts -%}
+{% endblock bottom_scripts -%}
+</body>
+</html>
