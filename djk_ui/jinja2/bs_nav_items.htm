@@ -1,0 +1,24 @@
+{%- macro bs_nav_items(navs=None) -%}
+{% if navs is none -%}
+    {% set navs = [] -%}
+{% endif -%}
+{% for nav in navs -%}
+    {% set atts = {} -%}
+    {% if nav.atts is defined -%}
+        {% do atts.update(nav.atts) -%}
+    {% endif -%}
+    {% if nav.tooltip -%}
+        {% do atts.update({
+            'data-toggle': 'tooltip',
+            'data-placement': 'bottom',
+            'title': nav.tooltip
+        }) -%}
+    {% endif -%}
+    {% do tpl.add_css_classes_to_dict(atts, 'nav-link') -%}
+    <li class="nav-item"><a{{ tpl.json_flatatt(atts) }} href="{{ nav.url }}">{{ nav.text }}</a></li>
+{% endfor -%}
+{% endmacro -%}
+{% if _render_ -%}
+    {{ bs_nav_items(navs) }}
+{% endif -%}
+
