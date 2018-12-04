@@ -18,6 +18,8 @@ void function(TransformTags) {
             'CARD-BODY': TransformTags.bsCardBody,
             'CARD-FOOTER': TransformTags.bsCardFooter,
             'CARD-TITLE': TransformTags.bsCardTitle,
+            'FORM-INLINE': TransformTags.formInline,
+            'NAVBAR-DEFAULT': TransformTags.navbarDefault,
         });
     };
 
@@ -43,12 +45,22 @@ void function(TransformTags) {
         return this.toTag(elem, 'div', 'card-title mb-0');
     };
 
+    TransformTags.formInline = function(elem, tagName) {
+        return this.toTag(elem, 'form', 'form-inline default-padding');
+    };
+
+    TransformTags.navbarDefault = function(elem, tagName) {
+        return this.toTag(elem, 'nav', 'nav navbar navbar-light bg-light navbar-expand-md');
+    };
+
 }(App.TransformTags.prototype);
 
 App.transformTags = new App.TransformTags();
 
 App.ui = {
-    cardTitleSelector: '.card-title:first',
+    getCardTitle: function($elem) {
+        return $elem.find('.card-title:first');
+    },
     highlightNav: function(anchor, highlight) {
         if (highlight) {
             $(anchor).addClass('active');
@@ -57,4 +69,3 @@ App.ui = {
         }
     },
 };
-

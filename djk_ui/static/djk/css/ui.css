@@ -2,4 +2,6 @@ form .form-optional .card .card-header,
 form .form-empty .card .card-header {
 	opacity: 0.8;
 }
-
+.form-inline .form-control {
+	margin: 0.5em;
+}
