@@ -9,7 +9,7 @@ App.blockTags = {
             itemClasses: 'condensed list-group-item preformatted',
             localKeyTag: '<div>',
             // localKeyClasses: 'label label-info label-gray preformatted br-after',
-            localKeyClasses: 'badge badge-pill preformatted br-after',
+            localKeyClasses: 'badge badge-pill preformatted',
         },
         {
             enclosureTag: '<ul>',
@@ -20,17 +20,17 @@ App.blockTags = {
             itemClasses: 'condensed list-group-item bg-light preformatted',
             localKeyTag: '<div>',
             // localKeyClasses: 'label label-info label-gray preformatted br-after',
-            localKeyClasses: 'badge badge-pill text-info preformatted br-after',
+            localKeyClasses: 'badge badge-pill text-info preformatted',
         },
     ],
     badges: [
         {
             enclosureTag: '<div>',
             // enclosureClasses: 'well well-condensed well-sm',
-            enclosureClasses: 'card card-body bg-light mb-3 well-condensed',
+            enclosureClasses: 'card card-body bg-light p-1 m-1',
             itemTag: '<span>',
             // itemClasses: 'badge preformatted',
-            itemClasses: 'badge badge-pill badge-info mb-1 preformatted',
+            itemClasses: 'badge badge-pill badge-info p-1 m-1 preformatted',
             localKeyTag: '<div>',
             // localKeyClasses: 'label label-info label-white preformatted',
             localKeyClasses: 'badge badge-secondary mr-1 preformatted',
@@ -86,7 +86,7 @@ void function(TransformTags) {
     };
 
     TransformTags.formInline = function(elem, tagName) {
-        return this.toTag(elem, 'form', 'form-inline default-padding');
+        return this.toTag(elem, 'form', 'form-inline');
     };
 
     TransformTags.navbarDefault = function(elem, tagName) {
