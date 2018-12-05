@@ -1,3 +1,43 @@
+App.blockTags = {
+    list: [
+        {
+            enclosureTag: '<ul>',
+            // enclosureClasses: 'list-group',
+            enclosureClasses: 'list-group',
+            itemTag: '<li>',
+            // itemClasses: 'condensed list-group-item preformatted',
+            itemClasses: 'condensed list-group-item preformatted',
+            localKeyTag: '<div>',
+            // localKeyClasses: 'label label-info label-gray preformatted br-after',
+            localKeyClasses: 'badge badge-pill preformatted br-after',
+        },
+        {
+            enclosureTag: '<ul>',
+            // enclosureClasses: 'list-group',
+            enclosureClasses: 'list-group',
+            itemTag: '<li>',
+            // itemClasses: 'condensed list-group-item list-group-item-warning preformatted',
+            itemClasses: 'condensed list-group-item bg-light preformatted',
+            localKeyTag: '<div>',
+            // localKeyClasses: 'label label-info label-gray preformatted br-after',
+            localKeyClasses: 'badge badge-pill text-info preformatted br-after',
+        },
+    ],
+    badges: [
+        {
+            enclosureTag: '<div>',
+            // enclosureClasses: 'well well-condensed well-sm',
+            enclosureClasses: 'card card-body bg-light mb-3 well-condensed',
+            itemTag: '<span>',
+            // itemClasses: 'badge preformatted',
+            itemClasses: 'badge badge-pill badge-info mb-1 preformatted',
+            localKeyTag: '<div>',
+            // localKeyClasses: 'label label-info label-white preformatted',
+            localKeyClasses: 'badge badge-secondary mr-1 preformatted',
+        }
+    ]
+};
+
 void function(TransformTags) {
 
     TransformTags._init = TransformTags.init;
