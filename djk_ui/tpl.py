@@ -12,7 +12,7 @@ def print_bs_labels(row, bs_type='info', cb=escape, show_keys=None, i18n=None):
                 'key': '<span{attrs}>{k}: {v}</span><span class="conditional-display"></span>',
                 'top': '{}',
             },
-            tpl_kwargs={'attrs': {'class': 'label label-' + bs_type + ' preformatted'}},
+            tpl_kwargs={'attrs': {'class': 'badge bg-' + bs_type + ' preformatted'}},
             cb=cb,
             show_keys=show_keys,
             i18n=i18n
@@ -31,8 +31,8 @@ def print_bs_badges(row, cb=escape, show_keys=None, i18n=None):
                 'top': '{}',
             },
             tpl_kwargs={
-                'attrs': {'class': "badge preformatted"},
-                'k_attrs': {'class': "label label-info label-white preformatted"}
+                'attrs': {'class': "badge badge-pill badge-info preformatted"},
+                'k_attrs': {'class': "badge badge-primary text-white preformatted"}
             },
             cb=cb,
             show_keys=show_keys,
@@ -50,11 +50,11 @@ def print_bs_well(row, cb=escape, show_keys=None, i18n=None):
                 'elem': '<span{attrs}>{v}</span><span class="conditional-display"></span>',
                 'key': ('<span{attrs}><div{k_attrs}>{k}:</div> {v}</span>'
                         '<span class="conditional-display"></span>'),
-                'top': '<div class="well well-condensed well-sm">{}</div>',
+                'top': '<div class="card card-body bg-light p-1 m-1">{}</div>',
             },
             tpl_kwargs={
-                'attrs': {'class': "badge preformatted"},
-                'k_attrs': {'class': "label label-info label-white preformatted"}
+                'attrs': {'class': "badge badge-pill badge-info p-1 m-1 preformatted"},
+                'k_attrs': {'class': "badge badge-secondary mr-1 preformatted"}
             },
             cb=cb,
             show_keys=show_keys,
@@ -93,7 +93,7 @@ def print_badge_list_group(row, cb=escape, show_keys=None, i18n=None):
             },
             tpl_kwargs={
                 'v_attrs': {'class': 'list-group-item'},
-                'k_attrs': {'class': "badge preformatted"},
+                'k_attrs': {'class': "badge badge-pills badge-info float-right preformatted"},
             },
             cb=cb,
             show_keys=show_keys,
