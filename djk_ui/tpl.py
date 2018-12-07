@@ -8,11 +8,11 @@ def print_bs_labels(row, bs_type='info', cb=escape, show_keys=None, i18n=None):
     return mark_safe(
         tpl.PrintList(
             tpl={
-                'elem': '<span{attrs}>{v}</span><span class="conditional-display"></span>',
-                'key': '<span{attrs}>{k}: {v}</span><span class="conditional-display"></span>',
+                'v': '<span{attrs}>{v}</span><span class="conditional-display"></span>',
+                'kv': '<span{attrs}>{k}: {v}</span><span class="conditional-display"></span>',
                 'top': '{}',
             },
-            tpl_kwargs={'attrs': {'class': 'badge bg-' + bs_type + ' preformatted'}},
+            tpl_kwargs={'attrs': {'class': 'badge bg-' + bs_type + ' fs-85 preformatted'}},
             cb=cb,
             show_keys=show_keys,
             i18n=i18n
@@ -26,12 +26,12 @@ def print_bs_badges(row, cb=escape, show_keys=None, i18n=None):
     return mark_safe(
         tpl.PrintList(
             tpl={
-                'elem': '<span{attrs}>{v}</span><span class="conditional-display"></span>',
-                'key': '<span{attrs}><div{k_attrs}>{k}:</div> {v}</span><span class="conditional-display"></span>',
+                'v': '<span{attrs}>{v}</span><span class="conditional-display"></span>',
+                'kv': '<span{attrs}><div{k_attrs}>{k}:</div> {v}</span><span class="conditional-display"></span>',
                 'top': '{}',
             },
             tpl_kwargs={
-                'attrs': {'class': "badge badge-pill badge-info preformatted"},
+                'attrs': {'class': "badge badge-pill badge-info fs-85 preformatted"},
                 'k_attrs': {'class': "badge badge-primary text-white preformatted"}
             },
             cb=cb,
@@ -47,13 +47,13 @@ def print_bs_well(row, cb=escape, show_keys=None, i18n=None):
     return mark_safe(
         tpl.PrintList(
             tpl={
-                'elem': '<span{attrs}>{v}</span><span class="conditional-display"></span>',
-                'key': ('<span{attrs}><div{k_attrs}>{k}:</div> {v}</span>'
+                'v': '<span{attrs}>{v}</span><span class="conditional-display"></span>',
+                'kv': ('<span{attrs}><div{k_attrs}>{k}:</div> {v}</span>'
                         '<span class="conditional-display"></span>'),
                 'top': '<div class="card card-body bg-light p-1 m-1">{}</div>',
             },
             tpl_kwargs={
-                'attrs': {'class': "badge badge-pill badge-info p-1 m-1 preformatted"},
+                'attrs': {'class': "badge badge-pill badge-info fs-85 p-1 m-1 preformatted"},
                 'k_attrs': {'class': "badge badge-secondary mr-1 preformatted"}
             },
             cb=cb,
@@ -67,8 +67,8 @@ def print_list_group(row, cb=escape, skip_empty=False, show_keys=None, i18n=None
     return mark_safe(
         tpl.PrintList(
             tpl={
-                'elem': '<li{li_attrs}>{v}</li>\n',
-                'key': '<li{li_attrs}>{k}: <span{v_attrs}>{v}</span></li>\n',
+                'v': '<li{li_attrs}>{v}</li>\n',
+                'kv': '<li{li_attrs}>{k}: <span{v_attrs}>{v}</span></li>\n',
                 'top': '<ul class="list-group">{}</ul>\n',
             },
             tpl_kwargs={
@@ -87,8 +87,8 @@ def print_badge_list_group(row, cb=escape, show_keys=None, i18n=None):
     return mark_safe(
         tpl.PrintList(
             tpl={
-                'elem': '<li{v_attrs}>{v}</li>\n',
-                'key': '<li{v_attrs}><span{k_attrs}>{k}</span>{v}</li>\n',
+                'v': '<li{v_attrs}>{v}</li>\n',
+                'kv': '<li{v_attrs}><span{k_attrs}>{k}</span>{v}</li>\n',
                 'top': '<ul class="list-group">{}</ul>\n',
             },
             tpl_kwargs={
