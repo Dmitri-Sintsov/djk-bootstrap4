@@ -78,7 +78,7 @@ void function(TransformTags) {
     };
 
     TransformTags.bsCardFooter = function(elem, tagName) {
-        return this.toTag(elem, 'div', 'card-footer');
+        return this.toTag(elem, 'div', 'card-footer text-dark bg-light');
     };
 
     TransformTags.bsCardTitle = function(elem, tagName) {
