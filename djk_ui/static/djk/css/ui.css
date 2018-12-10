@@ -799,6 +799,14 @@
 }
 /* End of backward compatibility styles from Bootstrap 3.3.7 */
 
+.input-as-select label {
+	margin-top: 0.5em;
+}
+
+.page-link {
+	white-space: nowrap;
+}
+
 form .form-optional .card .card-header,
 form .form-empty .card .card-header {
 	opacity: 0.8;
