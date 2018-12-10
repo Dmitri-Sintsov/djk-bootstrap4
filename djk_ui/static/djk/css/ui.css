@@ -1,7 +1,7 @@
 /* Begin of backward compatibility styles from Bootstrap 3.3.7 */
 .glyphicon {
 	position: relative;
-	top: 1px;
+	/* top: 1px; */
 	display: inline-block;
 	font-family: 'Glyphicons Halflings';
 	font-style: normal;
