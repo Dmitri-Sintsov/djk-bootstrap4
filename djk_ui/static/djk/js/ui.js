@@ -101,12 +101,47 @@ App.transformTags = new App.TransformTags();
  * Does not provide the full abstraction layer, only minimizes the difference between bs3 and bs4 API.
  */
 App.ui = {
+    defaultDialogSize: BootstrapDialog.SIZE_WIDE,
     disposePopover: function($elem) {
         return $elem.popover('dispose');
     },
     getCardTitle: function($elem) {
         return $elem.find('.card-title:first');
     },
+    // Currently available highlight directions:
+    //   0 - do not highlight,
+    //   1 - highlight columns,
+    //   2 - highlight rows,
+    highlightModeRules: [
+        {
+            'none': {
+                direction: null,
+                header: '',
+                cycler: [],
+            }
+        },
+        {
+            'cycleColumns': {
+                direction: 0,
+                header: 'table-info',
+                cycler: ['table-warning', ''],
+            },
+        },
+        {
+            'cycleRows': {
+                direction: 1,
+                header: 'table-info',
+                cycler: ['table-warning', ''],
+            },
+        },
+        {
+            'linearRows': {
+                direction: 1,
+                header: '',
+                cycler: ['linear-white'],
+            }
+        },
+    ],
     highlightNav: function(anchor, highlight) {
         if (highlight) {
             $(anchor).addClass('active');
