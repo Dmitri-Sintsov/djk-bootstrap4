@@ -108,6 +108,7 @@ App.ui = {
     getCardTitle: function($elem) {
         return $elem.find('.card-title:first');
     },
+    dialogBlockTags: App.blockTags.list,
     // Currently available highlight directions:
     //   0 - do not highlight,
     //   1 - highlight columns,
