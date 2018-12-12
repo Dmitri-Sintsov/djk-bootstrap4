@@ -149,4 +149,6 @@ App.ui = {
             $(anchor).removeClass('active');
         }
     },
+    labelClass: 'badge',
+    version: 4,
 };
