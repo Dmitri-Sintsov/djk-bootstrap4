@@ -153,3 +153,55 @@ App.ui = {
     labelClass: 'badge',
     version: 4,
 };
+
+
+/**
+ * Uses Tempus Dominus for Bootstrap 4, version 5.1.2.
+ */
+App.ui.DatetimeWidget = function() {};
+
+void function(DatetimeWidget) {
+
+    DatetimeWidget.wrapDateControls = function() {
+        var hash = 'dtp-' + $.randomHash();
+        this.$dateControls.addClass('datetimepicker-input');
+        this.$dateControls.attr('target', '#' + hash);
+        this.$dateControls.wrap('<div class="input-group" id="' + hash + '" data-target-input="nearest"></div>');
+        this.$dateControls.after(
+            '<div class="input-group-append pointer" data-target="#' + hash + '" data-toggle="datetimepicker">' +
+            '<div class="input-group-text"><span class="fa fa-calendar"></span></div>' +
+            '</div>'
+        );
+    };
+
+    DatetimeWidget.init = function() {
+        if (!this.has()) {
+            return;
+        }
+        this.wrapDateControls();
+        var formatFix = App.propGet(this.formatFixes, App.conf.languageCode);
+
+        // Datetime field widget.
+        var options = {
+            language: App.conf.languageCode,
+        };
+        if (formatFix !== undefined) {
+            options.format = formatFix.datetime;
+            // options.extraformats = [options.format];
+        }
+        this.$parent.find('.datetime-control').parent('.input-group').datetimepicker(options);
+
+        // Date field widget.
+        var options = {
+            language: App.conf.languageCode,
+            format: 'L',
+        };
+        if (formatFix !== undefined) {
+            options.format = formatFix.date;
+            // options.extraformats = [options.format];
+        }
+        this.$parent.find('.date-control').parent('.input-group').datetimepicker(options);
+        return this;
+    };
+
+}(App.ui.DatetimeWidget.prototype);
