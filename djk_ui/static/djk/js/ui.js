@@ -162,7 +162,7 @@ App.ui.DatetimeWidget = function() {};
 
 void function(DatetimeWidget) {
 
-    DatetimeWidget.wrapDateControls = function() {
+    DatetimeWidget.wrap = function() {
         var hash = 'dtp-' + $.randomHash();
         this.$dateControls.addClass('datetimepicker-input');
         this.$dateControls.attr('target', '#' + hash);
@@ -175,33 +175,42 @@ void function(DatetimeWidget) {
     };
 
     DatetimeWidget.init = function() {
-        if (!this.has()) {
-            return;
-        }
-        this.wrapDateControls();
-        var formatFix = App.propGet(this.formatFixes, App.conf.languageCode);
+        if (this.has()) {
+            this.wrap();
+            var formatFix = App.propGet(this.formatFixes, App.conf.languageCode);
 
-        // Datetime field widget.
-        var options = {
-            language: App.conf.languageCode,
-        };
-        if (formatFix !== undefined) {
-            options.format = formatFix.datetime;
-            // options.extraformats = [options.format];
-        }
-        this.$parent.find('.datetime-control').parent('.input-group').datetimepicker(options);
+            // Datetime field widget.
+            var options = {
+                language: App.conf.languageCode,
+            };
+            if (formatFix !== undefined) {
+                options.format = formatFix.datetime;
+                // options.extraformats = [options.format];
+            }
+            this.$dateControls.filter('.datetime-control').parent('.input-group').datetimepicker(options);
 
-        // Date field widget.
-        var options = {
-            language: App.conf.languageCode,
-            format: 'L',
-        };
-        if (formatFix !== undefined) {
-            options.format = formatFix.date;
-            // options.extraformats = [options.format];
+            // Date field widget.
+            var options = {
+                language: App.conf.languageCode,
+                format: 'L',
+            };
+            if (formatFix !== undefined) {
+                options.format = formatFix.date;
+                // options.extraformats = [options.format];
+            }
+            this.$dateControls.filter('.date-control').parent('.input-group').datetimepicker(options);
         }
-        this.$parent.find('.date-control').parent('.input-group').datetimepicker(options);
         return this;
+    };
+
+    DatetimeWidget.destroy = function() {
+        if (this.has()) {
+            this.$dateControls.parent('.input-group').each(function() {
+                if ($(this).data('datetimepicker') !== undefined) {
+                    $(this).datetimepicker('destroy');
+                }
+            });
+        }
     };
 
 }(App.ui.DatetimeWidget.prototype);
