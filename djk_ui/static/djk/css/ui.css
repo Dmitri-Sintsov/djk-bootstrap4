@@ -1,3 +1,318 @@
+@font-face{
+	font-family:'FontAwesome';
+	src:url('../fonts/fontawesome-webfont.eot?v=4.7.0');
+	src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),
+	url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),
+	url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),
+	url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),
+	url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+	font-weight:normal;
+	font-style:normal
+}
+
+/* https://gist.github.com/blowsie/15f8fe303383e361958bd53ecb7294f9 */
+.iconui {
+	display:inline-block;
+	font:normal normal normal 14px/1 FontAwesome;
+	font-size:inherit;
+	text-rendering:auto;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale
+	top: 0;
+}
+.iconui-chevron-up:before{content:""}
+.iconui-chevron-right:before{content:""}
+.iconui-chevron-left:before{content:""}
+.iconui-asterisk:before{content:""}
+.iconui-plus:before{content:""}
+.iconui-eur:before{content:""}
+.iconui-minus:before{content:""}
+.iconui-cloud:before{content:""}
+.iconui-envelope:before{content:""}
+.iconui-pencil:before{content:""}
+.iconui-glass:before{content:""}
+.iconui-music:before{content:""}
+.iconui-search:before{content:""}
+.iconui-heart:before{content:""}
+.iconui-star:before{content:""}
+.iconui-star-empty:before{content:""}
+.iconui-user:before{content:""}
+.iconui-film:before{content:""}
+.iconui-th-large:before{content:""}
+.iconui-th:before{content:""}
+.iconui-th-list:before{content:""}
+.iconui-ok:before{content:""}
+.iconui-remove:before{content:""}
+.iconui-zoom-in:before{content:""}
+.iconui-zoom-out:before{content:""}
+.iconui-off:before{content:""}
+.iconui-signal:before{content:""}
+.iconui-cog:before{content:""}
+.iconui-trash:before{content:""}
+.iconui-home:before{content:""}
+.iconui-file:before{content:""}
+.iconui-time:before{content:""}
+.iconui-road:before{content:""}
+.iconui-download-alt:before{content:""}
+.iconui-download:before{content:""}
+.iconui-upload:before{content:""}
+.iconui-inbox:before{content:""}
+.iconui-play-circle:before{content:""}
+.iconui-repeat:before{content:""}
+.iconui-refresh:before{content:""}
+.iconui-list-alt:before{content:""}
+.iconui-lock:before{content:""}
+.iconui-flag:before{content:""}
+.iconui-headphones:before{content:""}
+.iconui-volume-off:before{content:""}
+.iconui-volume-down:before{content:""}
+.iconui-volume-up:before{content:""}
+.iconui-qrcode:before{content:""}
+.iconui-barcode:before{content:""}
+.iconui-tag:before{content:""}
+.iconui-tags:before{content:""}
+.iconui-book:before{content:""}
+.iconui-bookmark:before{content:""}
+.iconui-print:before{content:""}
+.iconui-camera:before{content:""}
+.iconui-font:before{content:""}
+.iconui-bold:before{content:""}
+.iconui-italic:before{content:""}
+.iconui-text-height:before{content:""}
+.iconui-text-width:before{content:""}
+.iconui-align-left:before{content:""}
+.iconui-align-center:before{content:""}
+.iconui-align-right:before{content:""}
+.iconui-align-justify:before{content:""}
+.iconui-list:before{content:""}
+.iconui-indent-left:before{content:""}
+.iconui-indent-right:before{content:""}
+.iconui-facetime-video:before{content:""}
+.iconui-picture:before{content:""}
+.iconui-map-marker:before{content:""}
+.iconui-adjust:before{content:""}
+.iconui-tint:before{content:""}
+.iconui-edit:before{content:""}
+.iconui-share:before{content:""}
+.iconui-check:before{content:""}
+.iconui-move:before{content:""}
+.iconui-step-backward:before{content:""}
+.iconui-fast-backward:before{content:""}
+.iconui-backward:before{content:""}
+.iconui-play:before{content:""}
+.iconui-pause:before{content:""}
+.iconui-stop:before{content:""}
+.iconui-forward:before{content:""}
+.iconui-fast-forward:before{content:""}
+.iconui-step-forward:before{content:""}
+.iconui-eject:before{content:""}
+.iconui-plus-sign:before{content:""}
+.iconui-minus-sign:before{content:""}
+.iconui-remove-sign:before{content:""}
+.iconui-ok-sign:before{content:""}
+.iconui-question-sign:before{content:""}
+.iconui-info-sign:before{content:""}
+.iconui-screenshot:before{content:""}
+.iconui-remove-circle:before{content:""}
+.iconui-ok-circle:before{content:""}
+.iconui-ban-circle:before{content:""}
+.iconui-arrow-left:before{content:""}
+.iconui-arrow-right:before{content:""}
+.iconui-arrow-up:before{content:""}
+.iconui-arrow-down:before{content:""}
+.iconui-share-alt:before{content:""}
+.iconui-resize-full:before{content:""}
+.iconui-resize-small:before{content:""}
+.iconui-exclamation-sign:before{content:""}
+.iconui-gift:before{content:""}
+.iconui-leaf:before{content:""}
+.iconui-fire:before{content:""}
+.iconui-eye-open:before{content:""}
+.iconui-eye-close:before{content:""}
+.iconui-warning-sign:before{content:""}
+.iconui-plane:before{content:""}
+.iconui-calendar:before{content:""}
+.iconui-random:before{content:""}
+.iconui-comment:before{content:""}
+.iconui-magnet:before{content:""}
+.iconui-chevron-down:before{content:""}
+.iconui-retweet:before{content:""}
+.iconui-shopping-cart:before{content:""}
+.iconui-folder-close:before{content:""}
+.iconui-folder-open:before{content:""}
+.iconui-resize-vertical:before{content:""}
+.iconui-resize-horizontal:before{content:""}
+.iconui-hdd:before{content:""}
+.iconui-bullhorn:before{content:""}
+.iconui-bell:before{content:""}
+.iconui-certificate:before{content:""}
+.iconui-thumbs-up:before{content:""}
+.iconui-thumbs-down:before{content:""}
+.iconui-hand-right:before{content:""}
+.iconui-hand-left:before{content:""}
+.iconui-hand-up:before{content:""}
+.iconui-hand-down:before{content:""}
+.iconui-circle-arrow-right:before{content:""}
+.iconui-circle-arrow-left:before{content:""}
+.iconui-circle-arrow-up:before{content:""}
+.iconui-circle-arrow-down:before{content:""}
+.iconui-globe:before{content:""}
+.iconui-wrench:before{content:""}
+.iconui-tasks:before{content:""}
+.iconui-filter:before{content:""}
+.iconui-briefcase:before{content:""}
+.iconui-fullscreen:before{content:""}
+.iconui-dashboard:before{content:""}
+.iconui-paperclip:before{content:""}
+.iconui-heart-empty:before{content:""}
+.iconui-link:before{content:""}
+.iconui-phone:before{content:""}
+.iconui-pushpin:before{content:""}
+.iconui-usd:before{content:""}
+.iconui-gbp:before{content:""}
+.iconui-sort:before{content:""}
+.iconui-sort-by-alphabet:before{content:""}
+.iconui-sort-by-alphabet-alt:before{content:""}
+.iconui-sort-by-order:before{content:""}
+.iconui-sort-by-order-alt:before{content:""}
+.iconui-sort-by-attributes:before{content:""}
+.iconui-sort-by-attributes-alt:before{content:""}
+.iconui-unchecked:before{content:""}
+.iconui-expand:before{content:""}
+.iconui-collapse-down:before{content:""}
+.iconui-collapse-up:before{content:""}
+.iconui-log-in:before{content:""}
+.iconui-flash:before{content:""}
+.iconui-log-out:before{content:""}
+.iconui-new-window:before{content:""}
+.iconui-record:before{content:""}
+.iconui-save:before{content:""}
+.iconui-open:before{content:""}
+.iconui-saved:before{content:""}
+.iconui-import:before{content:""}
+.iconui-export:before{content:""}
+.iconui-send:before{content:""}
+.iconui-floppy-disk:before{content:""}
+.iconui-floppy-saved:before{content:""}
+.iconui-floppy-remove:before{content:""}
+.iconui-floppy-save:before{content:""}
+.iconui-floppy-open:before{content:""}
+.iconui-credit-card:before{content:""}
+.iconui-transfer:before{content:""}
+.iconui-cutlery:before{content:""}
+.iconui-header:before{content:""}
+.iconui-compressed:before{content:""}
+.iconui-earphone:before{content:""}
+.iconui-phone-alt:before{content:""}
+.iconui-tower:before{content:""}
+.iconui-stats:before{content:""}
+.iconui-sd-video:before{content:""}
+.iconui-hd-video:before{content:""}
+.iconui-subtitles:before{content:""}
+.iconui-sound-stereo:before{content:""}
+.iconui-sound-dolby:before{content:""}
+.iconui-sound-5-1:before{content:""}
+.iconui-sound-6-1:before{content:""}
+.iconui-sound-7-1:before{content:""}
+.iconui-copyright-mark:before{content:""}
+.iconui-registration-mark:before{content:""}
+.iconui-cloud-download:before{content:""}
+.iconui-cloud-upload:before{content:""}
+.iconui-tree-conifer:before{content:""}
+.iconui-tree-deciduous:before{content:""}
+.iconui-cd:before{content:""}
+.iconui-save-file:before{content:""}
+.iconui-open-file:before{content:""}
+.iconui-level-up:before{content:""}
+.iconui-copy:before{content:""}
+.iconui-paste:before{content:""}
+.iconui-alert:before{content:""}
+.iconui-equalizer:before{content:""}
+.iconui-king:before{content:""}
+.iconui-queen:before{content:""}
+.iconui-pawn:before{content:""}
+.iconui-bishop:before{content:""}
+.iconui-knight:before{content:""}
+.iconui-baby-formula:before{content:""}
+.iconui-tent:before{content:""}
+.iconui-blackboard:before{content:""}
+.iconui-bed:before{content:""}
+.iconui-apple:before{content:""}
+.iconui-erase:before{content:""}
+.iconui-hourglass:before{content:""}
+.iconui-lamp:before{content:""}
+.iconui-duplicate:before{content:""}
+.iconui-piggy-bank:before{content:""}
+.iconui-scissors:before{content:""}
+.iconui-bitcoin:before{content:""}
+.iconui-btc:before{content:""}
+.iconui-xbt:before{content:""}
+.iconui-yen:before{content:""}
+.iconui-jpy:before{content:""}
+.iconui-ruble:before{content:""}
+.iconui-rub:before{content:""}
+.iconui-scale:before{content:""}
+.iconui-ice-lolly:before{content:""}
+.iconui-ice-lolly-tasted:before{content:""}
+.iconui-education:before{content:""}
+.iconui-option-horizontal:before{content:""}
+.iconui-option-vertical:before{content:""}
+.iconui-menu-hamburger:before{content:""}
+.iconui-modal-window:before{content:""}
+.iconui-oil:before{content:""}
+.iconui-grain:before{content:""}
+.iconui-sunglasses:before{content:""}
+.iconui-text-size:before{content:""}
+.iconui-text-color:before{content:""}
+.iconui-text-background:before{content:""}
+.iconui-object-align-top:before{content:""}
+.iconui-object-align-bottom:before{content:""}
+.iconui-object-align-horizontal:before{content:""}
+.iconui-object-align-left:before{content:""}
+.iconui-object-align-vertical:before{content:""}
+.iconui-object-align-right:before{content:""}
+.iconui-triangle-right:before{content:""}
+.iconui-triangle-left:before{content:""}
+.iconui-triangle-bottom:before{content:""}
+.iconui-triangle-top:before{content:""}
+.iconui-console:before{content:""}
+.iconui-superscript:before{content:""}
+.iconui-subscript:before{content:""}
+.iconui-menu-left:before{content:""}
+.iconui-menu-right:before{content:""}
+.iconui-menu-down:before{content:""}
+.iconui-menu-up:before{content:""}
+
+.iconui-ctrl, .iconui-ctrl-before:before {
+	top: 0;
+	color: Gray;
+	font-family: 'FontAwesome';
+	font-size: 14px;
+}
+
+a.sort-asc:before {
+	content: "\f176";
+	padding-right: 0.5em;
+}
+
+a.sort-desc:before {
+	content: "\f175";
+	padding-right: 0.5em;
+}
+
+a.sort-inactive:before {
+	content: "\f07d";
+	padding-right: 0.5em;
+}
+
+form label.required:after {
+	color: Red;
+	font-family: 'FontAwesome';
+	font-size: 14px;
+	padding-left: 0.5em;
+	content: "\f0e7";
+}
+
 .input-as-select label {
 	margin-top: 0.5em;
 }
