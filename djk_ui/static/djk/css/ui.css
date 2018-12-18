@@ -1,14 +1,4 @@
-@font-face{
-	font-family:'FontAwesome';
-	src:url('../fonts/fontawesome-webfont.eot?v=4.7.0');
-	src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),
-	url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),
-	url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),
-	url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),
-	url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
-	font-weight:normal;
-	font-style:normal
-}
+@import 'lib/font-awesome.css';
 
 /* https://gist.github.com/blowsie/15f8fe303383e361958bd53ecb7294f9 */
 .iconui {
