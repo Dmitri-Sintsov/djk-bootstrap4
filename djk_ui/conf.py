@@ -5,6 +5,6 @@ LAYOUT_CLASSES = {
     },
     'display': {
         'label': 'w-25 table-light',
-        'field': 'w-100 table-primary',
+        'field': 'w-100 table-default',
     },
 }
