@@ -31,7 +31,7 @@ def print_bs_badges(row, cb=escape, show_keys=None, i18n=None):
                 'top': '{}',
             },
             tpl_kwargs={
-                'attrs': {'class': "badge badge-pill badge-info fs-85 preformatted"},
+                'attrs': {'class': "badge badge-info fs-85 preformatted"},
                 'k_attrs': {'class': "badge badge-primary text-white preformatted"}
             },
             cb=cb,
@@ -53,7 +53,7 @@ def print_bs_well(row, cb=escape, show_keys=None, i18n=None):
                 'top': '<div class="card card-body bg-light p-1 m-1">{}</div>',
             },
             tpl_kwargs={
-                'attrs': {'class': "badge badge-pill badge-info fs-85 p-1 m-1 preformatted"},
+                'attrs': {'class': "badge badge-info fs-85 p-1 m-1 text-left preformatted"},
                 'k_attrs': {'class': "badge badge-secondary mr-1 preformatted"}
             },
             cb=cb,
@@ -93,7 +93,7 @@ def print_badge_list_group(row, cb=escape, show_keys=None, i18n=None):
             },
             tpl_kwargs={
                 'v_attrs': {'class': 'list-group-item'},
-                'k_attrs': {'class': "badge badge-pills badge-info float-right preformatted"},
+                'k_attrs': {'class': "badge badge-info float-right preformatted"},
             },
             cb=cb,
             show_keys=show_keys,
