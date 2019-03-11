@@ -45,6 +45,7 @@ void function(TransformTags) {
     TransformTags.init = function() {
         this._init();
         this.add({
+            'CARD': TransformTags.bsCard,
             'CARD-DEFAULT': TransformTags.bsCard,
             'CARD-PRIMARY': TransformTags.bsCard,
             'CARD-SUCCESS': TransformTags.bsCard,
@@ -64,7 +65,12 @@ void function(TransformTags) {
     };
 
     TransformTags.bsCard = function(elem, tagName) {
-        var typ = tagName.split(/-/)[1].toLowerCase();
+        if (elem.hasAttribute('type')) {
+            var typ = elem.getAttribute('type');
+            elem.removeAttribute('type');
+        } else {
+            var typ = tagName.split(/-/)[1].toLowerCase();
+        }
         var textClass = (typeof {'light': '', 'default': ''}[typ]) === 'undefined' ?  'text-white ': '';
         return this.toTag(elem, 'div', 'card ' + (typ === 'light' ? '' : textClass) + 'bg-' + typ + ' mb-3');
     };
