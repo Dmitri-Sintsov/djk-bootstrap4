@@ -3,7 +3,7 @@
     {% set navs = [] -%}
 {% endif -%}
 {% for nav in navs -%}
-    {% set a_atts = {'class': 'nav-link'} -%}
+    {% set a_atts = {} -%}
     {% if nav.tooltip -%}
         {% do a_atts.update({
             'data-toggle': 'tooltip',
@@ -20,6 +20,7 @@
     {% else -%}
         {% do tpl.add_css_classes_to_dict(a_atts, 'disabled') -%}
     {% endif -%}
+    {% do tpl.add_css_classes_to_dict(a_atts, 'nav-link') -%}
     <li class="nav-item"><a{{ tpl.json_flatatt(a_atts) }}>{{ nav.text }}</a></li>
 {% endfor -%}
 {% endmacro -%}
