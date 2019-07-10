@@ -4,7 +4,6 @@
 {% endif -%}
 {% for nav in navs -%}
     {% set a_atts = {'class': 'nav-link'} -%}
-    {% set li_atts = {} -%}
     {% if nav.tooltip -%}
         {% do a_atts.update({
             'data-toggle': 'tooltip',
@@ -19,10 +18,9 @@
     {% if nav.url is defined -%}
         {% do a_atts.update({'href': nav.url}) -%}
     {% else -%}
-        {% do tpl.add_css_classes_to_dict(li_atts, 'disabled') -%}
+        {% do tpl.add_css_classes_to_dict(a_atts, 'disabled') -%}
     {% endif -%}
-    {% do tpl.add_css_classes_to_dict(li_atts, 'nav-item') -%}
-    <li{{ tpl.json_flatatt(li_atts) }}><a{{ tpl.json_flatatt(a_atts) }} href="{{ nav.url }}">{{ nav.text }}</a></li>
+    <li class="nav-item"><a{{ tpl.json_flatatt(a_atts) }}>{{ nav.text }}</a></li>
 {% endfor -%}
 {% endmacro -%}
 {% if _render_ -%}
