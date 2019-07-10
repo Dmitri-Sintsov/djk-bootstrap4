@@ -3,20 +3,26 @@
     {% set navs = [] -%}
 {% endif -%}
 {% for nav in navs -%}
-    {% set atts = {} -%}
-    {% if nav.atts is defined -%}
-        {% do atts.update(nav.atts) -%}
-    {% endif -%}
+    {% set a_atts = {'class': 'nav-link'} -%}
+    {% set li_atts = {} -%}
     {% if nav.tooltip -%}
-        {% do atts.update({
+        {% do li_atts.update({
             'data-toggle': 'tooltip',
             'data-placement': 'bottom',
             'data-html': 'false',
             'title': nav.tooltip
         }) -%}
     {% endif -%}
-    {% do tpl.add_css_classes_to_dict(atts, 'nav-link') -%}
-    <li class="nav-item"><a{{ tpl.json_flatatt(atts) }} href="{{ nav.url }}">{{ nav.text }}</a></li>
+    {% if nav.atts is defined -%}
+        {% do li_atts.update(nav.atts) -%}
+    {% endif -%}
+    {% if nav.url is defined -%}
+        {% do a_atts.update({'href': nav.url}) -%}
+    {% else -%}
+        {% do tpl.add_css_classes_to_dict(li_atts, 'disabled') -%}
+    {% endif -%}
+    {% do tpl.add_css_classes_to_dict(li_atts, 'nav-item') -%}
+    <li{{ tpl.json_flatatt(li_atts) }}><a{{ tpl.json_flatatt(a_atts) }} href="{{ nav.url }}">{{ nav.text }}</a></li>
 {% endfor -%}
 {% endmacro -%}
 {% if _render_ -%}
