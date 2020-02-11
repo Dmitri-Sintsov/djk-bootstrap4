@@ -50,7 +50,7 @@ def print_bs_well(row, cb=escape, show_keys=None, i18n=None):
                 'v': '<span{attrs}>{v}</span><span class="conditional-display"></span>',
                 'kv': ('<span{attrs}><div{k_attrs}>{k}:</div> {v}</span>'
                         '<span class="conditional-display"></span>'),
-                'top': '<div class="card card-body bg-light p-1 m-1">{}</div>',
+                'top': '<div class="border bg-light p-1 m-1">{}</div>',
             },
             tpl_kwargs={
                 'attrs': {'class': "badge badge-info fs-85 p-1 m-1 text-left preformatted"},

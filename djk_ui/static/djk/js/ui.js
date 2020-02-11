@@ -27,7 +27,7 @@ App.blockTags = {
         {
             enclosureTag: '<div>',
             // enclosureClasses: 'well well-condensed well-sm',
-            enclosureClasses: 'card card-body bg-light p-1 m-1',
+            enclosureClasses: 'border bg-light p-1 m-1',
             itemTag: '<span>',
             // itemClasses: 'badge preformatted',
             itemClasses: 'badge badge-info p-1 m-1 text-left preformatted',
