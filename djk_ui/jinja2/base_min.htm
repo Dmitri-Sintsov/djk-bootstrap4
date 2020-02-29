@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+{% if page_context is not defined -%}
+{% set page_context = create_page_context() -%}
+{% endif -%}
+{% do page_context.set_request(request) -%}
 {% include 'base_head.htm' -%}
 {% block head -%}
 {% endblock head -%}
