@@ -3,10 +3,10 @@
 {% load static %}
 {% load jinja %}
 {% load page_context %}
+{% init_page_context %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{% init_page_context %}
 {% jinja 'base_head.htm' %}
 {% block head %}
 {% endblock head %}
