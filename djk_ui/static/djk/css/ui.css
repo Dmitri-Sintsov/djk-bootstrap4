@@ -318,3 +318,41 @@ form .form-empty .card .card-header {
 .form-inline .form-control {
 	margin: 0.5em;
 }
+
+/* btn-light with color changed from #212529 to #414549 */
+.btn-default {
+	color:#414549;
+	background-color:#f8f9fa;
+	border-color:#f8f9fa
+}
+.btn-default:hover {
+	color:#414549;
+	background-color:#e2e6ea;
+	border-color:#dae0e5
+}
+.btn-default.focus,
+.btn-default:focus {
+	color:#414549;
+	background-color:#e2e6ea;
+	border-color:#dae0e5;
+	box-shadow:0 0 0 .2rem rgba(216,217,219,.5)
+}
+.btn-default.disabled,
+.btn-default:disabled {
+	color:#414549;
+	background-color:#f8f9fa;
+	border-color:#f8f9fa
+}
+.btn-default:not(:disabled):not(.disabled).active,
+.btn-default:not(:disabled):not(.disabled):active,
+.show>.btn-default.dropdown-toggle {
+	color:#414549;
+	background-color:#dae0e5;
+	border-color:#d3d9df
+}
+.btn-default:not(:disabled):not(.disabled).active:focus,
+.btn-default:not(:disabled):not(.disabled):active:focus,
+.show>.btn-default.dropdown-toggle:focus {
+	box-shadow:0 0 0 .2rem rgba(216,217,219,.5)
+}
+
