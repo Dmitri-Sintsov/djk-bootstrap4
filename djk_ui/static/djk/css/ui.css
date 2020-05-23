@@ -319,6 +319,11 @@ form .form-empty .card .card-header {
 	margin: 0.5em;
 }
 
+/* fix bootstrap-datetimepicker width */
+.bootstrap-datetimepicker-widget.dropdown-menu {
+	width: 18rem;
+}
+
 /* btn-light with color changed from #212529 to #414549 */
 .btn-default {
 	color:#414549;
