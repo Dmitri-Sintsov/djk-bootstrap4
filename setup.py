@@ -66,4 +66,5 @@ setup(
         'Programming Language :: Python :: 3',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
+    setup_requires=['wheel'],
 )
