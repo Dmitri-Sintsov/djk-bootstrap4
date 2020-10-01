@@ -55,6 +55,7 @@ void function(TransformTags) {
             'CARD-SECONDARY': TransformTags.bsCard,
             'CARD-LIGHT': TransformTags.bsCard,
             'CARD-DARK': TransformTags.bsCard,
+            'CARD-GROUP': TransformTags.bsCardGroup,
             'CARD-HEADER': TransformTags.bsCardHeader,
             'CARD-BODY': TransformTags.bsCardBody,
             'CARD-FOOTER': TransformTags.bsCardFooter,
@@ -73,6 +74,10 @@ void function(TransformTags) {
         }
         var textClass = (typeof {'light': '', 'default': ''}[typ]) === 'undefined' ?  'text-white ': '';
         return this.toTag(elem, 'div', 'card ' + (typ === 'light' ? '' : textClass) + 'bg-' + typ + ' mb-3');
+    };
+
+    TransformTags.bsCardGroup = function(elem, tagName) {
+        return this.toTag(elem, 'div', 'card-group');
     };
 
     TransformTags.bsCardHeader = function(elem, tagName) {
