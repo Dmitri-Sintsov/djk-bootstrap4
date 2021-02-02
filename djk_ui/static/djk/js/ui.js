@@ -174,15 +174,23 @@ App.ui.DatetimeWidget = function() {};
 void function(DatetimeWidget) {
 
     DatetimeWidget.wrap = function() {
-        var hash = 'dtp-' + $.randomHash();
-        this.$dateControls.addClass('datetimepicker-input');
-        this.$dateControls.attr('target', '#' + hash);
-        this.$dateControls.wrap('<div class="input-group" id="' + hash + '" data-target-input="nearest"></div>');
-        this.$dateControls.after(
-            '<div class="input-group-append pointer" data-target="#' + hash + '" data-toggle="datetimepicker">' +
-            '<div class="input-group-text"><span class="fa fa-calendar"></span></div>' +
-            '</div>'
-        );
+        this.$dateControls.each(function(k, v) {
+            var $dateControl = $(v);
+            var targetId = $(v).prop('id');
+            if (!targetId) {
+                targetId = 'dtp-' + $.randomHash() ;
+            }
+            $dateControl
+            .addClass('datetimepicker-input')
+            .attr('id', targetId)
+            .attr('target', '#' + targetId)
+            .wrap('<div class="input-group"></div>');
+            $dateControl.after(
+                '<div class="input-group-append pointer" data-target="#' + targetId + '" data-toggle="datetimepicker">' +
+                '<div class="input-group-text"><span class="fa fa-calendar"></span></div>' +
+                '</div>'
+            );
+        });
     };
 
     DatetimeWidget.init = function() {
@@ -192,13 +200,14 @@ void function(DatetimeWidget) {
 
             // Datetime field widget.
             var options = {
+                // keepInvalid: true,
                 language: App.conf.languageCode,
             };
             if (formatFix !== undefined) {
                 options.format = formatFix.datetime;
                 // options.extraformats = [options.format];
             }
-            this.$dateControls.filter('.datetime-control').parent('.input-group').datetimepicker(options);
+            this.$dateControls.filter('.datetime-control').datetimepicker(options);
 
             // Date field widget.
             var options = {
@@ -209,7 +218,7 @@ void function(DatetimeWidget) {
                 options.format = formatFix.date;
                 // options.extraformats = [options.format];
             }
-            this.$dateControls.filter('.date-control').parent('.input-group').datetimepicker(options);
+            this.$dateControls.filter('.date-control').datetimepicker(options);
         }
         return this;
     };
