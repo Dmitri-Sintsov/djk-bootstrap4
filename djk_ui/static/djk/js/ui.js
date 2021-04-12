@@ -1,4 +1,12 @@
-App.blockTags = {
+/**
+ * Does not provide the full abstraction layer, only minimizes the difference between bs3 and bs4 API.
+ */
+
+import { propGet } from './prop.js';
+import { AppConf } from './conf.js';
+import { TransformTags } from './transformtags.js';
+
+var blockTags = {
     list: [
         {
             enclosureTag: '<ul>',
@@ -104,22 +112,98 @@ void function(TransformTags) {
         return this.toTag(elem, 'nav', 'nav navbar navbar-light bg-light navbar-expand-md');
     };
 
-}(App.TransformTags.prototype);
+}(TransformTags.prototype);
 
-App.transformTags = new App.TransformTags();
+var transformTags = new TransformTags();
+
+function disposePopover($elem) {
+    return $elem.popover('dispose');
+}
+
+function highlightNav(anchor, highlight) {
+    if (highlight) {
+        $(anchor).addClass('active');
+    } else {
+        $(anchor).removeClass('active');
+    }
+}
+
+function getCardTitle($elem) {
+    return $elem.find('.card-title:first');
+}
 
 /**
- * Does not provide the full abstraction layer, only minimizes the difference between bs3 and bs4 API.
+ * Uses Tempus Dominus for Bootstrap 4, version 5.1.2.
  */
-App.ui = {
+function BaseDatetimeWidget() {};
+
+void function(BaseDatetimeWidget) {
+
+    BaseDatetimeWidget.wrap = function() {
+        this.$dateControls.each(function(k, v) {
+            var $dateControl = $(v);
+            var targetId = $(v).prop('id');
+            if (!targetId) {
+                targetId = 'dtp-' + $.randomHash() ;
+            }
+            $dateControl
+            .addClass('datetimepicker-input')
+            .attr('id', targetId)
+            .attr('target', '#' + targetId)
+            .wrap('<div class="input-group"></div>');
+            $dateControl.after(
+                '<div class="input-group-append pointer" data-target="#' + targetId + '" data-toggle="datetimepicker">' +
+                '<div class="input-group-text"><span class="fa fa-calendar"></span></div>' +
+                '</div>'
+            );
+        });
+    };
+
+    BaseDatetimeWidget.init = function() {
+        if (this.has()) {
+            this.wrap();
+            var formatFix = propGet(this.formatFixes, AppConf('languageCode'));
+
+            // Datetime field widget.
+            var options = {
+                // keepInvalid: true,
+                language: AppConf('languageCode'),
+            };
+            if (formatFix !== undefined) {
+                options.format = formatFix.datetime;
+                // options.extraformats = [options.format];
+            }
+            this.$dateControls.filter('.datetime-control').datetimepicker(options);
+
+            // Date field widget.
+            var options = {
+                language: AppConf('languageCode'),
+                format: 'L',
+            };
+            if (formatFix !== undefined) {
+                options.format = formatFix.date;
+                // options.extraformats = [options.format];
+            }
+            this.$dateControls.filter('.date-control').datetimepicker(options);
+        }
+        return this;
+    };
+
+    BaseDatetimeWidget.destroy = function() {
+        if (this.has()) {
+            this.$dateControls.parent('.input-group').each(function() {
+                if ($(this).data('datetimepicker') !== undefined) {
+                    $(this).datetimepicker('destroy');
+                }
+            });
+        }
+    };
+
+}(BaseDatetimeWidget.prototype);
+
+var ui = {
     defaultDialogSize: BootstrapDialog.SIZE_WIDE,
-    disposePopover: function($elem) {
-        return $elem.popover('dispose');
-    },
-    getCardTitle: function($elem) {
-        return $elem.find('.card-title:first');
-    },
-    dialogBlockTags: App.blockTags.list,
+    dialogBlockTags: blockTags.list,
     // Currently available highlight directions:
     //   0 - do not highlight,
     //   1 - highlight columns,
@@ -154,83 +238,8 @@ App.ui = {
             }
         },
     ],
-    highlightNav: function(anchor, highlight) {
-        if (highlight) {
-            $(anchor).addClass('active');
-        } else {
-            $(anchor).removeClass('active');
-        }
-    },
     labelClass: 'badge',
     version: 4,
 };
 
-
-/**
- * Uses Tempus Dominus for Bootstrap 4, version 5.1.2.
- */
-App.ui.DatetimeWidget = function() {};
-
-void function(DatetimeWidget) {
-
-    DatetimeWidget.wrap = function() {
-        this.$dateControls.each(function(k, v) {
-            var $dateControl = $(v);
-            var targetId = $(v).prop('id');
-            if (!targetId) {
-                targetId = 'dtp-' + $.randomHash() ;
-            }
-            $dateControl
-            .addClass('datetimepicker-input')
-            .attr('id', targetId)
-            .attr('target', '#' + targetId)
-            .wrap('<div class="input-group"></div>');
-            $dateControl.after(
-                '<div class="input-group-append pointer" data-target="#' + targetId + '" data-toggle="datetimepicker">' +
-                '<div class="input-group-text"><span class="fa fa-calendar"></span></div>' +
-                '</div>'
-            );
-        });
-    };
-
-    DatetimeWidget.init = function() {
-        if (this.has()) {
-            this.wrap();
-            var formatFix = App.propGet(this.formatFixes, App.conf.languageCode);
-
-            // Datetime field widget.
-            var options = {
-                // keepInvalid: true,
-                language: App.conf.languageCode,
-            };
-            if (formatFix !== undefined) {
-                options.format = formatFix.datetime;
-                // options.extraformats = [options.format];
-            }
-            this.$dateControls.filter('.datetime-control').datetimepicker(options);
-
-            // Date field widget.
-            var options = {
-                language: App.conf.languageCode,
-                format: 'L',
-            };
-            if (formatFix !== undefined) {
-                options.format = formatFix.date;
-                // options.extraformats = [options.format];
-            }
-            this.$dateControls.filter('.date-control').datetimepicker(options);
-        }
-        return this;
-    };
-
-    DatetimeWidget.destroy = function() {
-        if (this.has()) {
-            this.$dateControls.parent('.input-group').each(function() {
-                if ($(this).data('datetimepicker') !== undefined) {
-                    $(this).datetimepicker('destroy');
-                }
-            });
-        }
-    };
-
-}(App.ui.DatetimeWidget.prototype);
+export { blockTags, transformTags, disposePopover, highlightNav, getCardTitle, BaseDatetimeWidget, ui };
