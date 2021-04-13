@@ -135,11 +135,11 @@ function getCardTitle($elem) {
 /**
  * Uses Tempus Dominus for Bootstrap 4, version 5.1.2.
  */
-function BaseDatetimeWidget() {};
+function UiDatetimeWidget() {};
 
-void function(BaseDatetimeWidget) {
+void function(UiDatetimeWidget) {
 
-    BaseDatetimeWidget.wrap = function() {
+    UiDatetimeWidget.wrap = function() {
         this.$dateControls.each(function(k, v) {
             var $dateControl = $(v);
             var targetId = $(v).prop('id');
@@ -159,7 +159,7 @@ void function(BaseDatetimeWidget) {
         });
     };
 
-    BaseDatetimeWidget.init = function() {
+    UiDatetimeWidget.init = function() {
         if (this.has()) {
             this.wrap();
             var formatFix = propGet(this.formatFixes, AppConf('languageCode'));
@@ -189,7 +189,7 @@ void function(BaseDatetimeWidget) {
         return this;
     };
 
-    BaseDatetimeWidget.destroy = function() {
+    UiDatetimeWidget.destroy = function() {
         if (this.has()) {
             this.$dateControls.parent('.input-group').each(function() {
                 if ($(this).data('datetimepicker') !== undefined) {
@@ -199,7 +199,7 @@ void function(BaseDatetimeWidget) {
         }
     };
 
-}(BaseDatetimeWidget.prototype);
+}(UiDatetimeWidget.prototype);
 
 var ui = {
     defaultDialogSize: BootstrapDialog.SIZE_WIDE,
@@ -242,4 +242,4 @@ var ui = {
     version: 4,
 };
 
-export { blockTags, transformTags, disposePopover, highlightNav, getCardTitle, BaseDatetimeWidget, ui };
+export { blockTags, transformTags, disposePopover, highlightNav, getCardTitle, UiDatetimeWidget, ui };
