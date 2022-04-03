@@ -4,6 +4,7 @@
 
 import { propGet } from './prop.js';
 import { AppConf } from './conf.js';
+import { elements } from './elements.js';
 import { TransformTags } from './transformtags.js';
 
 var blockTags = {
@@ -46,31 +47,119 @@ var blockTags = {
     ]
 };
 
+var cardTagDef = {
+    classes: ['card'],
+    getTextClass: function(cardType) {
+        return (typeof {'light': '', 'default': ''}[cardType]) === 'undefined' ?  'text-white': '';
+    },
+    getBgClass: function(cardType) {
+        return 'bg-' + cardType;
+    },
+    addCardClasses: function(cardType) {
+        if (cardType) {
+            var textClass = this.getTextClass(cardType);
+            var bgClass = this.getBgClass(cardType);
+            if (textClass !== '') {
+                this.classList.add(textClass);
+            }
+            this.classList.add(bgClass);
+        }
+    },
+    removeCardClasses: function(cardType) {
+        if (cardType) {
+            var textClass = this.getTextClass(cardType);
+            var bgClass = this.getBgClass(cardType);
+            if (textClass !== '') {
+                this.classList.remove(textClass);
+            }
+            this.classList.remove(bgClass);
+        }
+    },
+    getCardType: function() {
+        if (this.hasAttribute('type')) {
+            return this.getAttribute('type');
+        } else {
+            return this.tagName.split(/-/)[1].toLowerCase();
+        }
+    },
+    connected: function() {
+        var cardType = this.getCardType();
+        this.addCardClasses(cardType);
+        this.classList.add('mb-3');
+    },
+    attributeChanged: {
+        type: function(oldValue, newValue, tagDef) {
+            this.removeCardClasses(oldValue);
+            this.addCardClasses(newValue);
+        }
+    }
+};
+
+elements.newBlockElements(
+    $.extend({name: 'card-type'}, cardTagDef),
+    $.extend({name: 'card-default'}, cardTagDef),
+    $.extend({name: 'card-primary'}, cardTagDef),
+    $.extend({name: 'card-success'}, cardTagDef),
+    $.extend({name: 'card-info'}, cardTagDef),
+    $.extend({name: 'card-warning'}, cardTagDef),
+    $.extend({name: 'card-danger'}, cardTagDef),
+    $.extend({name: 'card-secondary'}, cardTagDef),
+    $.extend({name: 'card-light'}, cardTagDef),
+    $.extend({name: 'card-dark'}, cardTagDef),
+    {
+        name: 'card-group',
+        classes: ['card-group']
+    },
+    {
+        name: 'card-header',
+        classes: ['card-header']
+    },
+    {
+        name: 'card-body',
+        classes: ['card-body', 'text-dark', 'bg-white']
+    },
+    {
+        name: 'card-footer',
+        classes: ['card-footer', 'text-dark', 'bg-light']
+    },
+    {
+        name: 'card-title',
+        classes: ['card-title', 'mb-0']
+    },
+    {
+        name: 'navbar-default',
+        classes: ['nav', 'navbar', 'navbar-light', 'bg-light', 'navbar-expand-md']
+    },
+);
+
 void function(TransformTags) {
 
     TransformTags._init = TransformTags.init;
 
     TransformTags.init = function() {
         this._init();
-        this.add({
-            'CARD': TransformTags.bsCard,
-            'CARD-DEFAULT': TransformTags.bsCard,
-            'CARD-PRIMARY': TransformTags.bsCard,
-            'CARD-SUCCESS': TransformTags.bsCard,
-            'CARD-INFO': TransformTags.bsCard,
-            'CARD-WARNING': TransformTags.bsCard,
-            'CARD-DANGER': TransformTags.bsCard,
-            'CARD-SECONDARY': TransformTags.bsCard,
-            'CARD-LIGHT': TransformTags.bsCard,
-            'CARD-DARK': TransformTags.bsCard,
-            'CARD-GROUP': TransformTags.bsCardGroup,
-            'CARD-HEADER': TransformTags.bsCardHeader,
-            'CARD-BODY': TransformTags.bsCardBody,
-            'CARD-FOOTER': TransformTags.bsCardFooter,
-            'CARD-TITLE': TransformTags.bsCardTitle,
-            'FORM-INLINE': TransformTags.formInline,
-            'NAVBAR-DEFAULT': TransformTags.navbarDefault,
-        });
+        if (AppConf('compatTransformTags')) {
+            this.add({
+                'CARD-TYPE': TransformTags.bsCard,
+                'CARD-DEFAULT': TransformTags.bsCard,
+                'CARD-PRIMARY': TransformTags.bsCard,
+                'CARD-SUCCESS': TransformTags.bsCard,
+                'CARD-INFO': TransformTags.bsCard,
+                'CARD-WARNING': TransformTags.bsCard,
+                'CARD-DANGER': TransformTags.bsCard,
+                'CARD-SECONDARY': TransformTags.bsCard,
+                'CARD-LIGHT': TransformTags.bsCard,
+                'CARD-DARK': TransformTags.bsCard,
+                'CARD-GROUP': TransformTags.bsCardGroup,
+                'CARD-HEADER': TransformTags.bsCardHeader,
+                'CARD-BODY': TransformTags.bsCardBody,
+                'CARD-FOOTER': TransformTags.bsCardFooter,
+                'CARD-TITLE': TransformTags.bsCardTitle,
+                'NAVBAR-DEFAULT': TransformTags.navbarDefault,
+            });
+        }
+        // Inherited custom elements v1 do not work yet.
+        this.add({'FORM-INLINE': TransformTags.formInline});
     };
 
     TransformTags.bsCard = function(elem, tagName) {
