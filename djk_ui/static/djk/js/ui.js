@@ -130,6 +130,15 @@ elements.newBlockElements(
         name: 'navbar-default',
         classes: ['nav', 'navbar', 'navbar-light', 'bg-light', 'navbar-expand-md']
     },
+    /*
+    // Inherited custom elements v1 do not work yet.
+    {
+        ancestor: HTMLFormElement,
+        name: 'form-inline',
+        extendsTagName: 'form',
+        classes: ['form', 'form-inline'],
+    }
+    */
 );
 
 void function(TransformTags) {
