@@ -100,12 +100,12 @@ var dismissButtonTagDef = {
     ancestor: HTMLButtonElement,
     extendsTagName: 'button',
     classes: ['close'],
-    styles: {
-        'text-decoration': 'none',
-        'border': 'none',
-        'opacity': '1',
-        'background-color': 'transparent',
-    },
+    styles: [
+        {'text-decoration': 'none'},
+        {'border': 'none'},
+        {'opacity': '1'},
+        {'background-color': 'transparent'},
+    ],
     attrs: {
             'aria-label': 'Close',
     },
@@ -117,11 +117,11 @@ elements.newCustomElements(
         name: 'form-inline',
         ancestor: HTMLFormElement,
         extendsTagName: 'form',
-        styles: {
-            'display': 'inline-block',
-            'width': 'auto',
-            'vertical-align': 'middle',
-        }
+        styles: [
+            {'display': 'inline-block'},
+            {'width': 'auto'},
+            {'vertical-align': 'middle'},
+        ]
     },
     {
         ancestor: HTMLDivElement,
@@ -145,7 +145,7 @@ elements.newCustomElements(
     $.extend(true, {
         name: 'dismiss-alert',
         attrs: {
-            'data-bs-dismiss': 'alert',
+            'data-dismiss': 'alert',
         }
     }, dismissButtonTagDef),
     $.extend({name: 'badge-type'}, badgeTagDef),
