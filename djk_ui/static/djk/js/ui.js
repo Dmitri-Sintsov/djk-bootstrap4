@@ -491,21 +491,6 @@ function UiTooltip($elem) {
 }(UiTooltip.prototype);
 
 
-function UiAlertError() {};
-
-void function(UiAlertError) {
-
-    UiAlertError.getInputgroupField = function($inputGroup) {
-        return $inputGroup;
-    };
-
-    UiAlertError.addFieldAlert = function($alert) {
-        this.$field.after($alert);
-    };
-
-}(UiAlertError.prototype);
-
-
 function highlightNav(anchor, highlight) {
     if (highlight) {
         $(anchor).addClass('active');
@@ -628,4 +613,4 @@ var ui = {
     version: 4,
 };
 
-export { blockTags, transformTags, highlightNav, getCardTitle, UiAlertError, UiPopover, UiTooltip, UiDatetimeWidget, ui };
+export { blockTags, transformTags, highlightNav, getCardTitle, UiPopover, UiTooltip, UiDatetimeWidget, ui };
