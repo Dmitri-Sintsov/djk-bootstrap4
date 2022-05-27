@@ -530,6 +530,17 @@ void function(UiDatetimeWidget) {
         });
     };
 
+    UiDatetimeWidget.onShowDatetimepicker = function(ev) {
+        var $widget = $(ev.target).next('.bootstrap-datetimepicker-widget:first');
+        var $bootstrapDialogMessage = $widget.parents('.bootstrap-dialog-message:first');
+        if ($bootstrapDialogMessage.length === 1) {
+            $bootstrapDialogMessage.css({
+                'max-height': 'none',
+                'overflow-y': 'visible',
+            });
+        }
+    };
+
     UiDatetimeWidget.init = function() {
         if (this.has()) {
             this.wrap();
@@ -544,7 +555,9 @@ void function(UiDatetimeWidget) {
                 options.format = formatFix.datetime;
                 // options.extraformats = [options.format];
             }
-            this.$dateControls.filter('.datetime-control').datetimepicker(options);
+            this.$dateControls.filter('.datetime-control')
+            .on('show.datetimepicker', this.onShowDatetimepicker)
+            .datetimepicker(options);
 
             // Date field widget.
             var options = {
@@ -555,7 +568,9 @@ void function(UiDatetimeWidget) {
                 options.format = formatFix.date;
                 // options.extraformats = [options.format];
             }
-            this.$dateControls.filter('.date-control').datetimepicker(options);
+            this.$dateControls.filter('.date-control')
+            .on('show.datetimepicker', this.onShowDatetimepicker)
+            .datetimepicker(options);
         }
         return this;
     };
