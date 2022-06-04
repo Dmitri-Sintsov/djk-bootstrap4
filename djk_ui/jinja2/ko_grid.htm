@@ -1,0 +1,79 @@
+{% macro ko_grid(grid_options, template_args=None, dom_attrs=None) -%}
+{% if template_args is none -%}
+    {% set template_args = {} -%}
+{% endif -%}
+{% if dom_attrs is none -%}
+    {% set dom_attrs = {} -%}
+{% endif -%}
+{#
+
+Setup underscore.js template args (stored to dom_attrs as json at later step).
+
+-#}
+{%- set _template_args = {
+    'card_type': 'default',
+    'show_title': True,
+    'show_pagination': True,
+    'vscroll': False
+} -%}
+{% do _template_args.update(template_args) -%}
+{#
+
+Setup url name kwargs both for tpl.resolve_cbv() and as grid_options.pageRoute / .pageRouteKwargs
+
+-#}
+{% set _grid_options = tpl.discover_grid_options(request, grid_options) -%}
+{#
+
+Setup component dom_attrs.
+
+-#}
+{% do tpl.prepend_css_classes_to_dict(dom_attrs, 'component') -%}
+{% if 'classPath' in _grid_options -%}
+    {% do dom_attrs.update({'data-component-class': _grid_options['classPath']}) -%}
+    {% do _grid_options.pop('classPath') -%}
+{% endif -%}
+{% do dom_attrs.update({'data-component-options': _grid_options}) -%}
+{% if 'name' in dom_attrs -%}
+    {% set fragment_name = dom_attrs['name'] -%}
+    {% do dom_attrs.pop('name') -%}
+{% elif 'id' in dom_attrs -%}
+    {% set fragment_name = dom_attrs['id'] -%}
+{% endif -%}
+{#
+
+Setup template dom_attrs.
+
+-#}
+{% set _dom_attrs = {
+    'data-template-args': _template_args,
+    'data-template-options': {'meta_is_grid': True},
+} -%}
+{% do sdv.nested_update(_dom_attrs, dom_attrs) -%}
+{#
+
+Optional caller support.
+
+-#}
+{% if caller -%}
+{{ caller({
+    'fragment_name': fragment_name,
+    '_dom_attrs': _dom_attrs
+}) }}
+{% else -%}
+{% if fragment_name is defined -%}<a name="{{ fragment_name }}"></a>{% endif -%}
+
+<ko-grid{{ tpl.json_flatatt(_dom_attrs) }}>
+</ko-grid>
+{% endif -%}
+{% endmacro -%}
+{% if _render_ -%}
+    {% if not isinstance(_render_, dict) -%}
+        {% set _render_ = {
+            'grid_options': grid_options,
+            'template_args': template_args or None,
+            'dom_attrs': dom_attrs or None,
+        } -%}
+    {% endif -%}
+    {{ ko_grid(**_render_) }}
+{% endif -%}

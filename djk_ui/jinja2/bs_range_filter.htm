@@ -1,0 +1,67 @@
+<list-range-filter{{ tpl.json_flatatt(_render_.component_attrs)}}>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active accordion-toggle dropdown-toggle pointer" bs-data bs-toggle="collapse" aria-expanded="true">{{ _render_.title }} <span class="caret"></span></a>
+        </li>
+    </ul>
+    <card-default class="nav-card">
+        <div class="{{ _render_.collapse_class }}" aria-expanded="true" style="">
+            <card-body>
+                <div is="form-row">
+                    {% block controls -%}
+                    <label is="form-label" class="col-md-2 label-from localize-text">From</label>
+                    <div class="field col-md-3">
+                        {% block input_from -%}
+                        {% set input -%}
+                        <input {{ tpl.json_flatatt(_render_.from_input_attrs) }}>
+                        {% endset -%}
+                        {% if 'id_range_from' in _render_.errors -%}
+                        <div class="has-error">
+                            {{ input }}
+                            <div class="alert alert-warning alert-dismissible">
+                                <button is="dismiss-alert"></button>
+                                {{ ' / '.join(_render_.errors['id_range_from']) }}
+                            </div>
+                        </div>
+                        {% else -%}
+                            {{ input }}
+                        {% endif -%}
+                        {% endblock input_from -%}
+                    </div>
+                    <label is="form-label" class="col-md-2 label-to localize-text">To</label>
+                    <div class="field col-md-3">
+                        {% block input_to -%}
+                        {% set input -%}
+                        <input {{ tpl.json_flatatt(_render_.to_input_attrs) }}>
+                        {% endset -%}
+                        {% if 'id_range_to' in _render_.errors -%}
+                        <div class="has-error">
+                            {{ input }}
+                            <div class="alert alert-warning alert-dismissible">
+                                <button is="dismiss-alert"></button>
+                                {{ ' / '.join(_render_.errors['id_range_to']) }}
+                            </div>
+                        </div>
+                        {% else -%}
+                            {{ input }}
+                        {% endif -%}
+                        {% endblock input_to -%}
+                    </div>
+                    {% endblock controls -%}
+                </div>
+                <div is="form-row">
+                    <div class="field col-md-10">
+                        {% block extra -%}
+                        {% endblock extra -%}
+                        <div class="pull-right">
+                            {% block buttons -%}
+                            <a class="btn btn-small btn-default reset-url localize-text" href="{{ view.get_reverse_query(_render_.reset_url_query) }}">Remove selection</a>
+                            <a class="btn btn-small btn-primary apply-url localize-text" href="{{ view.get_reverse_query(_render_.apply_url_query) }}">Apply</a>
+                            {% endblock buttons -%}
+                        </div>
+                    </div>
+                </div>
+            </card-body>
+        </div>
+    </card-default>
+</list-range-filter>
