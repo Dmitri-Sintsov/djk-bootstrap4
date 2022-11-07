@@ -1,5 +1,5 @@
 include HISTORY.rst
 include README.rst
 include requirements.txt
-recursive-include djk_ui *.htm *.html *.js *.css *.py *.po *.mo *.gif *.eot *.svg *.ttf *.woff *.woff2
+recursive-include djk_ui *.htm *.html *.js *.css *.map *.py *.po *.mo *.gif *.eot *.svg *.ttf *.woff *.woff2
 
