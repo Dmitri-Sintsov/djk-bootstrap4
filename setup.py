@@ -11,10 +11,7 @@ import sys
 
 import djk_ui
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup
 
 version = djk_ui.__version__
 
