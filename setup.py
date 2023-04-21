@@ -11,7 +11,7 @@ import sys
 
 import djk_ui
 
-from setuptools import setup
+from setuptools import setup, find_namespace_packages
 
 version = djk_ui.__version__
 
@@ -36,6 +36,11 @@ with open('requirements.txt', 'r') as f:
         ] if s != ''
     ]
 
+packages = find_namespace_packages(
+    where='.',
+    include=['djk_ui', 'djk_ui.*'],
+)
+
 setup(
     name='djk-bootstrap4',
     version=version,
@@ -45,9 +50,7 @@ setup(
     author='Dmitriy Sintsov',
     author_email='questpc256@gmail.com',
     url='https://github.com/Dmitri-Sintsov/djk-bootstrap4',
-    packages=[
-        'djk_ui',
-    ],
+    packages=packages,
     include_package_data=True,
     install_requires=install_reqs,
     license="LGPL-3.0",
